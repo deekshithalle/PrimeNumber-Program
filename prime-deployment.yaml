@@ -1,0 +1,26 @@
+
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: prime-number-deployment
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: prime-number
+
+  template:
+    metadata:
+      labels:
+        app: prime-number
+
+    spec:
+      containers:
+        - name: prime-container
+          image: prime-java:latest
+          imagePullPolicy: Never
+          command: ["java", "PrimeNumber"]
+          args: []
